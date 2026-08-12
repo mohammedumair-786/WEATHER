@@ -66,3 +66,12 @@ weather-time-machine/
 ## 📄 License
 
 MIT — do whatever you'd like with it.
+cd weather-time-machine
+
+git init
+git add .
+git commit -m "Initial commit: Weather Time Machine
+
+Vanilla JS app that shows today's weather for a city and a
+6-year temperature timeline for the same calendar date, using
+the free Open-Meteo API (no API key required)."
