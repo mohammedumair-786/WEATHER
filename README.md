@@ -4,6 +4,9 @@ See today's weather for any city — then scroll back and see what this **exact 
 
 No sign-up, no API key. Powered entirely by the free [Open-Meteo](https://open-meteo.com) API.
 
+**Live demo:** [https://mohammedumair-786.github.io/WEATHER/](https://mohammedumair-786.github.io/WEATHER/)
+
+
 ## ✨ Why this is different
 
 Most weather demos just show today's forecast. This one turns weather into a small time-travel toy: search a city and get a strip-chart of "this day in history" — great for spotting warming trends, freak cold snaps, or just fun trivia like "5 years ago today it was 10° colder here."
