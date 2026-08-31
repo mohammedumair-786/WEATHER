@@ -1,15 +1,85 @@
-
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Educational App Development</title>
-    </head>
-
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Weather Time Machine</title>
+<meta name="description" content="See today's weather anywhere, alongside what this exact date looked like over the past six years." />
+ 
+<!-- Fonts used by style.css: Fraunces (display) + IBM Plex Mono (body/mono) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+ 
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+<header class="site-header">
+  <div class="header-inner">
+    <p class="eyebrow">Weather Time Machine</p>
+    <h1>What's the sky doing today, and what has it done before?</h1>
+    <p class="tagline">Search any city for today's conditions, then see how this exact date compared across the last six years.</p>
+  </div>
+</header>
+ 
+<main>
+  <form id="search-form" class="search-bar">
+    <input
+      id="city-input"
+      type="text"
+      name="city"
+      placeholder="Try “Jaipur” or “Lisbon”…"
+      autocomplete="off"
+      required
+    />
+    <button type="submit">Search</button>
+  </form>
+ 
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+ 
+  <section id="result" class="result hidden">
+    <div class="today-card">
+      <div id="today-icon" class="today-icon" aria-hidden="true"></div>
+ 
+      <div class="today-main">
+        <p id="place-name" class="place-label"></p>
+        <p id="today-date" class="today-date"></p>
+        <div class="temp-row">
+          <p class="temp-big"><span id="today-temp"></span><span class="deg">°</span></p>
+          <p id="today-desc" class="today-desc"></p>
+        </div>
+      </div>
+ 
+      <dl class="stat-grid">
+        <div>
+          <dt>Feels like</dt>
+          <dd id="today-feels"></dd>
+        </div>
+        <div>
+          <dt>Wind</dt>
+          <dd id="today-wind"></dd>
+        </div>
+        <div>
+          <dt>Humidity</dt>
+          <dd id="today-humidity"></dd>
+        </div>
+      </dl>
+    </div>
+ 
+    <div class="history-panel">
+      <p class="panel-label">On this date, over the years</p>
+      <div id="chart" class="chart"></div>
+      <p id="history-note" class="panel-note"></p>
+    </div>
+  </section>
+</main>
+ 
+<footer class="site-footer">
+  <p>Weather and historical data from <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>, free and no API key required.</p>
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>
+ 
