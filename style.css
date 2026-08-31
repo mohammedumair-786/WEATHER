@@ -9,16 +9,16 @@
   --teal: #1F7A6C;
   --teal-soft: #E4F2EF;
   --rose: #C2495B;
-
+ 
   --font-display: "Fraunces", serif;
   --font-mono: "IBM Plex Mono", monospace;
-
+ 
   --shadow-sm: 0 1px 2px rgba(22, 35, 58, 0.06), 0 1px 1px rgba(22, 35, 58, 0.04);
   --shadow-md: 0 8px 24px rgba(22, 35, 58, 0.08), 0 2px 6px rgba(22, 35, 58, 0.05);
 }
-
+ 
 * { box-sizing: border-box; }
-
+ 
 body {
   margin: 0;
   background: var(--bg);
@@ -27,7 +27,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
-
+ 
 .site-header {
   background:
     radial-gradient(120% 140% at 15% 0%, rgba(232, 149, 46, 0.16), transparent 55%),
@@ -36,12 +36,12 @@ body {
   color: #F4F7FA;
   padding: 68px 24px 44px;
 }
-
+ 
 .header-inner {
   max-width: 720px;
   margin: 0 auto;
 }
-
+ 
 .eyebrow {
   font-size: 12px;
   letter-spacing: 0.1em;
@@ -50,7 +50,7 @@ body {
   margin: 0 0 14px;
   font-weight: 500;
 }
-
+ 
 .site-header h1 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -58,21 +58,21 @@ body {
   margin: 0 0 14px;
   letter-spacing: -0.01em;
 }
-
+ 
 .tagline {
   color: #C3CEDD;
   font-size: 15px;
   margin: 0;
   max-width: 46ch;
 }
-
+ 
 main {
   max-width: 720px;
   margin: -28px auto 0;
   padding: 0 24px 80px;
   position: relative;
 }
-
+ 
 .search-bar {
   display: flex;
   gap: 10px;
@@ -82,7 +82,7 @@ main {
   border-radius: 14px;
   box-shadow: var(--shadow-md);
 }
-
+ 
 #city-input {
   flex: 1;
   padding: 14px 16px;
@@ -93,12 +93,12 @@ main {
   background: var(--bg);
   color: var(--ink);
 }
-
+ 
 #city-input:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--teal);
 }
-
+ 
 .search-bar button {
   padding: 14px 24px;
   font-family: var(--font-mono);
@@ -112,24 +112,24 @@ main {
   transition: transform 0.12s ease, background 0.15s ease;
   white-space: nowrap;
 }
-
+ 
 .search-bar button:hover { background: var(--teal); }
 .search-bar button:active { transform: scale(0.97); }
 .search-bar button:focus-visible,
 #city-input:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-
+ 
 .status {
   min-height: 20px;
   font-size: 13px;
   color: var(--ink-soft);
   padding: 4px 4px 0;
 }
-
+ 
 .status.error { color: var(--rose); }
-
+ 
 .result { margin-top: 24px; }
 .result.hidden { display: none; }
-
+ 
 .today-card {
   background: var(--card);
   border-radius: 16px;
@@ -141,34 +141,34 @@ main {
   gap: 24px;
   margin-bottom: 24px;
 }
-
+ 
 .today-icon {
   width: 64px;
   height: 64px;
   flex-shrink: 0;
 }
 .today-icon svg { width: 100%; height: 100%; }
-
+ 
 .place-label {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 600;
   margin: 0 0 4px;
 }
-
+ 
 .today-date {
   color: var(--ink-soft);
   font-size: 13px;
   margin: 0 0 12px;
 }
-
+ 
 .temp-row {
   display: flex;
   align-items: baseline;
   gap: 12px;
   flex-wrap: wrap;
 }
-
+ 
 .temp-big {
   font-family: var(--font-display);
   font-size: 56px;
@@ -177,16 +177,16 @@ main {
   margin: 0;
   line-height: 1;
 }
-
+ 
 .temp-big .deg { font-size: 28px; }
-
+ 
 .today-desc {
   margin: 0;
   color: var(--ink-soft);
   font-size: 14px;
   text-transform: capitalize;
 }
-
+ 
 .stat-grid {
   display: grid;
   gap: 16px;
@@ -194,7 +194,7 @@ main {
   border-left: 1px solid var(--line);
   padding-left: 24px;
 }
-
+ 
 .stat-grid dt {
   font-size: 10.5px;
   text-transform: uppercase;
@@ -202,20 +202,20 @@ main {
   color: var(--ink-soft);
   margin: 0 0 2px;
 }
-
+ 
 .stat-grid dd {
   margin: 0;
   font-size: 15px;
   font-weight: 500;
 }
-
+ 
 .history-panel {
   background: var(--card);
   border-radius: 16px;
   box-shadow: var(--shadow-md);
   padding: 32px;
 }
-
+ 
 .panel-label {
   font-size: 12px;
   text-transform: uppercase;
@@ -224,17 +224,17 @@ main {
   margin: 0 0 24px;
   font-weight: 600;
 }
-
+ 
 .chart {
   width: 100%;
 }
-
+ 
 .chart svg {
   display: block;
   width: 100%;
   height: auto;
 }
-
+ 
 .panel-note {
   margin: 20px 0 0;
   font-size: 12.5px;
@@ -242,7 +242,7 @@ main {
   padding-top: 16px;
   border-top: 1px solid var(--line);
 }
-
+ 
 .site-footer {
   max-width: 720px;
   margin: 0 auto;
@@ -250,9 +250,9 @@ main {
   font-size: 12px;
   color: var(--ink-soft);
 }
-
+ 
 .site-footer a { color: var(--teal); }
-
+ 
 @media (max-width: 560px) {
   .site-header { padding: 48px 20px 40px; }
   main { padding: 0 16px 60px; }
@@ -275,7 +275,8 @@ main {
   }
   .temp-big { font-size: 44px; }
 }
-
+ 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+ 
