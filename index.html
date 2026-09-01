@@ -1,15 +1,148 @@
-
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Educational App Development</title>
-    </head>
-
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Weather Time Machine</title>
+<meta name="description" content="See today's weather anywhere, alongside what this exact date looked like over the past six years." />
+<meta name="theme-color" content="#16233A" />
+ 
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="manifest" href="site.webmanifest" />
+ 
+<!-- Open Graph / Twitter link previews -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Weather Time Machine" />
+<meta property="og:description" content="See today's weather anywhere, alongside what this exact date looked like over the past six years." />
+<meta property="og:image" content="screenshot.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Weather Time Machine" />
+<meta name="twitter:description" content="See today's weather anywhere, alongside what this exact date looked like over the past six years." />
+<meta name="twitter:image" content="screenshot.png" />
+ 
+<!-- Fonts used by style.css: Fraunces (display) + IBM Plex Mono (body/mono) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+ 
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-text">
+      <p class="eyebrow">Weather Time Machine</p>
+      <h1>What's the sky doing today, and what has it done before?</h1>
+      <p class="tagline">Search any city for today's conditions, then see how this exact date compared across the last six years.</p>
+    </div>
+ 
+    <div class="header-art" aria-hidden="true">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="66" r="34" fill="none" stroke="#E8952E" stroke-width="5"/>
+        <g stroke="#E8952E" stroke-width="5" stroke-linecap="round">
+          <line x1="150" y1="10" x2="150" y2="22"/>
+          <line x1="150" y1="110" x2="150" y2="122"/>
+          <line x1="94" y1="66" x2="106" y2="66"/>
+          <line x1="194" y1="66" x2="206" y2="66"/>
+          <line x1="112" y1="28" x2="120" y2="36"/>
+          <line x1="180" y1="96" x2="188" y2="104"/>
+          <line x1="188" y1="28" x2="180" y2="36"/>
+          <line x1="120" y1="96" x2="112" y2="104"/>
+        </g>
+        <path d="M40 150a26 26 0 0 1 8-50.8A34 34 0 0 1 114 88 28.5 28.5 0 0 1 122 150Z" fill="none" stroke="#1F7A6C" stroke-width="5" stroke-linejoin="round"/>
+        <g stroke="#1F7A6C" stroke-width="5" stroke-linecap="round">
+          <line x1="66" y1="164" x2="60" y2="182"/>
+          <line x1="88" y1="164" x2="82" y2="182"/>
+          <line x1="110" y1="164" x2="104" y2="182"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+ 
+<main>
+  <form id="search-form" class="search-bar">
+    <input
+      id="city-input"
+      type="text"
+      name="city"
+      placeholder="Try “Jaipur” or “Lisbon”…"
+      autocomplete="off"
+      required
+    />
+    <button type="submit">Search</button>
+  </form>
+ 
+  <div class="chip-row" aria-label="Quick city search">
+    <button type="button" class="chip" data-city="Mumbai">Mumbai</button>
+    <button type="button" class="chip" data-city="London">London</button>
+    <button type="button" class="chip" data-city="New York">New York</button>
+    <button type="button" class="chip" data-city="Tokyo">Tokyo</button>
+    <button type="button" class="chip" data-city="Dubai">Dubai</button>
+    <button type="button" class="chip" data-city="Sydney">Sydney</button>
+  </div>
+ 
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+ 
+  <section id="empty-state" class="empty-state">
+    <div class="empty-card">
+      <p class="panel-label">How it works</p>
+      <div class="empty-steps">
+        <div class="empty-step">
+          <span class="empty-step-num">01</span>
+          <p>Type any city, or tap a quick pick above.</p>
+        </div>
+        <div class="empty-step">
+          <span class="empty-step-num">02</span>
+          <p>We pull today's live conditions for that spot.</p>
+        </div>
+        <div class="empty-step">
+          <span class="empty-step-num">03</span>
+          <p>See how the same date compared over the last six years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <section id="result" class="result hidden">
+    <div class="today-card">
+      <div id="today-icon" class="today-icon" aria-hidden="true"></div>
+ 
+      <div class="today-main">
+        <p id="place-name" class="place-label"></p>
+        <p id="today-date" class="today-date"></p>
+        <div class="temp-row">
+          <p class="temp-big"><span id="today-temp"></span><span class="deg">°</span></p>
+          <p id="today-desc" class="today-desc"></p>
+        </div>
+      </div>
+ 
+      <dl class="stat-grid">
+        <div>
+          <dt>Feels like</dt>
+          <dd id="today-feels"></dd>
+        </div>
+        <div>
+          <dt>Wind</dt>
+          <dd id="today-wind"></dd>
+        </div>
+        <div>
+          <dt>Humidity</dt>
+          <dd id="today-humidity"></dd>
+        </div>
+      </dl>
+    </div>
+ 
+    <div class="history-panel">
+      <p class="panel-label">On this date, over the years</p>
+      <div id="chart" class="chart"></div>
+      <p id="history-note" class="panel-note"></p>
+    </div>
+  </section>
+</main>
+ 
+<script src="script.js"></script>
+</body>
+</html>
+ 
